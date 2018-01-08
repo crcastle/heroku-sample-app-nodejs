@@ -1,0 +1,15 @@
+{
+  "name": "heroku-sample-app-nodejs",
+  "version": "1.0.0",
+  "description": "Learn to write & deploy a straightforward Heroku app built in the Node.js programming language.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
