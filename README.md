@@ -55,10 +55,11 @@ Great! We've now got the latest and greatest version of Node.js setup on your ma
 
 ### Installing Heroku locally
 
-Installing Heroku is easy. Paste the following into your Terminal;
+Installing Heroku is easy. Paste the following lines into your Terminal separately, waiting for the prior command to finish;
 
 ```bash
 brew install heroku/brew/heroku
+heroku update
 ```
 
 ---
@@ -87,6 +88,8 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 ```
 
+> If you have only a light familiarity with JavaScript, you may notice some strange JavaScript syntax. This code uses two relatively new JavaScript features: [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) and [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). If you want, you can read more about them in this [simplified overview](https://github.com/lukehoban/es6features#readme) of all the new features in ECMAScript 6 -- almost all of which have been [included in node.js since version 6.12.3](http://node.green/#ES2015).
+
 That's our entire app done! All we have to do now is run it so we can see it in a web browser. Before we worry about how to run it though, let's go over what each line is doing here.
 
 #### Line 1
@@ -111,9 +114,9 @@ Now we're instantiating an Express object within our app. The variable `app` is 
 const port = process.env.PORT || 3000
 ```
 
-Let's define a variable for the port our app will listen to. This line says listen to the port number defined in environment variable PORT, or, if no environment variable named PORT is available, listen to port 3000. You'll see why the environment variable is necessary later.
+Let's define a variable for the port our app will listen to. This line says listen to the port number defined in environment variable PORT, or, if no environment variable named PORT is available, listen to port 3000.
 
-In case you didn't know, most web apps listen to port 80 or 443. When you type [https://www.heroku.com/](https://www.heroku.com/) in your browser, it automatically requests the Heroku homepage on port 443.
+In case you didn't know, most web apps listen to port 80 or 443. These are the default ports for HTTP and HTTPS, respectively. When you type [https://www.heroku.com/](https://www.heroku.com/) in your browser, it automatically requests the Heroku homepage on port 443.
 
 #### Line 5
 
@@ -204,7 +207,8 @@ Having your app running on your own machine is great, but no one else can see it
 In your Terminal type;
 
 ```bash
-git add . # Adds all the files in your myapp folder
+git init
+git add server.js package.json package-lock.json
 git commit -m "First"
 ```
 
@@ -226,3 +230,9 @@ heroku open
 ![](docs/8.png)
 
 There's your app running on Heroku!
+
+---
+
+## Thanks
+
+Thanks to [Alasdair Monk](https://twitter.com/almonk) for providing [a template](https://github.com/almonk/heroku-sample-app) on which to base this!
